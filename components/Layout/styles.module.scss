@@ -1,0 +1,39 @@
+@import '../../styles/colors';
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+.sideBar {
+    background: $black !important;
+    &IsOpened {
+        width: 275px !important;
+        max-width: 275px !important;
+        min-width: 275px !important;
+    }
+    &IsClosed {
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: 0 !important;
+    }
+}
+
+.menuIcon {
+    color: $beige !important;
+    position: absolute;
+    right: -50px;
+    top: 0px;
+    cursor: pointer !important;
+    font-size: 24px !important;
+    background: $black !important;
+    transition: .3s ease all;
+    padding: 15px;
+}
+
+.header {
+    font-family: 'VT323', monospace;
+    background: $black !important;
+    color: $beige !important;
+    text-align: center;
+    font-size: 36px;
+}
+
+.content {
+    padding: 25px 15px;
+}
