@@ -1,16 +1,12 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@import './colors';
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $green !important;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.ant-tabs-tab:hover {
+    color: $yellow !important;
 }
 
-* {
-  box-sizing: border-box;
+.ant-tabs-ink-bar {
+    background: $green !important;
 }

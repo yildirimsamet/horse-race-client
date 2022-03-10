@@ -2,9 +2,9 @@ import { useState } from "react";
 import { UserProvider } from "../../contexts/UserContext";
 
 const UserProviderWrapper = ({children})=>{
-    const [user, setUser] = useState({name:"samet"});
+    const [user, setUser] = useState(null);
     return (
-        <UserProvider value={{user}}>
+        <UserProvider value={{user, setUser}}>
             {children}
         </UserProvider>
     )

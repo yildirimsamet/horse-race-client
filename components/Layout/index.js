@@ -1,31 +1,30 @@
 import { Layout } from 'antd';
-import { LeftOutlined, RightOutlined, UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import styles from './styles.module.scss';
 import cn from 'classnames'
+import Hamburger from '../Hamburger';
+import UserMenu from '../UserMenu';
+import LoginMenu from '../LoginMenu';
 import { useUser } from '../contexts/UserContext';
-
+import { ToastContainer } from 'react-toastify';
 const { Header, Footer, Sider, Content } = Layout;
-
 const Wrapper = ({ children }) => {
-    const { user } = useUser();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const handleMenuOpen = () => {
-        setIsMenuOpen(!isMenuOpen);
-    }
+    const { user } = useUser();
+
+
     return (
         <Layout>
             <Sider className={cn(styles.sideBar, isMenuOpen ? styles.sideBarIsOpened : styles.sideBarIsClosed)}>
-                {isMenuOpen ?
-                    <LeftOutlined className={styles.menuIcon} onClick={handleMenuOpen} /> :
-                    user ? <UserOutlined className={styles.menuIcon} onClick={handleMenuOpen} /> :
-                        <LockOutlined className={styles.menuIcon} onClick={handleMenuOpen} />}
+                <Hamburger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+                {user ? <UserMenu /> : <LoginMenu />}
             </Sider>
             <Layout>
                 <Header className={styles.header}>Pixel Race 🏇</Header>
-                <Content className={styles.content}>{children}</Content>
+                <Content style={{ minHeight: '100vh' }} className={styles.content}>{children}</Content>
                 <Footer>Footer</Footer>
             </Layout>
+            <ToastContainer />
         </Layout>
     )
 }

@@ -1,0 +1,13 @@
+.login {
+    &Form {
+        padding: 0 15px 25px 15px !important;
+        ;
+    }
+    &Input {
+        margin-bottom: 15px !important;
+    }
+    &Button {
+        float: right;
+        width: 100px;
+    }
+}
