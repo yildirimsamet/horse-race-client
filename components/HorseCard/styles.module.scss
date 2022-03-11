@@ -1,0 +1,58 @@
+@import '../../styles/colors';
+@font-face {
+    font-family: Muybridge;
+    src: url(https://www.lorp.org/fonts/MuybridgeGX.woff2);
+}
+
+@keyframes Gallop {
+    from {
+        font-variation-settings: "TIME" 0;
+    }
+    to {
+        font-variation-settings: "TIME" 15;
+    }
+}
+
+.horse {
+    border: 2px solid $yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.46);
+    padding: 25px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.05);
+    &Img {
+        font: 100px Muybridge;
+        animation: 2.5s linear infinite Gallop;
+    }
+    &Name {
+        font-weight: bold;
+        font-size: 26px;
+    }
+    &Properties {
+        margin-top: 10px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px 15px;
+        justify-items: center;
+        &Item {
+            & span:first-child {
+                margin-right: 5px;
+                font-weight: bold;
+                font-size: 16px;
+            }
+            & span:last-child {
+                font-weight: 600;
+            }
+        }
+    }
+    &Progress {
+        width: 85%;
+        & .ant-progress-bg {
+            background-color: $green !important;
+        }
+    }
+}

@@ -13,8 +13,11 @@
     &Info {
         font-size: 14px;
         strong {
+            margin-right: 5px;
             font-size: 16px;
         }
+        display: flex;
+        align-items: center;
     }
     &Logout {
         display: flex;

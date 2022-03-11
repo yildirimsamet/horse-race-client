@@ -6,7 +6,7 @@ const Navigations = () => {
             <Link href='my-barn'>
                 <a>My Barn</a>
             </Link>
-            <Link href='race'>
+            <Link href='races'>
                 <a>Races</a>
             </Link>
             <Link href='horse-shop'>
