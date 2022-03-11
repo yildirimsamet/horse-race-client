@@ -1,5 +1,5 @@
 import Cookies from 'js-cookie';
-import { setLocalStorage } from "./storage"
+import { removeLocalStorage, setLocalStorage } from "./storage"
 
 export const setUserStorageAndCookie = ({ user, token }) => {
     setLocalStorage({

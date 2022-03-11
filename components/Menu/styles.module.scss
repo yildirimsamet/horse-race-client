@@ -1,0 +1,7 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    &Item {
+        margin-bottom: 15px;
+    }
+}

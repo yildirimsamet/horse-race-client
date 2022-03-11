@@ -1,0 +1,31 @@
+@import '../../styles/colors';
+.userMenu {
+    background-color: $beige;
+    padding: 15px 10px 15px;
+    margin: 15px auto 0 auto;
+    border-radius: 10px;
+    width: 95%;
+    &Avatar {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15px;
+    }
+    &Info {
+        font-size: 14px;
+        strong {
+            font-size: 16px;
+        }
+    }
+    &Logout {
+        display: flex;
+        flex-direction: row-reverse;
+        button {
+            background-color: $green;
+            border-color: $green;
+            &:hover {
+                background-color: $red;
+                border-color: $red;
+            }
+        }
+    }
+}

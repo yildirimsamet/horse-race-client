@@ -2,15 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 .sideBar {
     background: $black !important;
+    transition: 1s !important;
     &IsOpened {
         width: 275px !important;
         max-width: 275px !important;
         min-width: 275px !important;
+        position: relative !important;
+        left: 0 !important;
     }
     &IsClosed {
-        width: 0 !important;
-        min-width: 0 !important;
-        max-width: 0 !important;
+        width: 275px !important;
+        min-width: 275px !important;
+        max-width: 275px !important;
+        position: absolute !important;
+        right: 100% !important;
     }
 }
 
@@ -20,6 +25,8 @@
     color: $beige !important;
     text-align: center;
     font-size: 36px;
+    width: 100% !important;
+    transition: 1s ease all !important;
 }
 
 .content {

@@ -7,6 +7,7 @@ import UserMenu from '../UserMenu';
 import LoginMenu from '../LoginMenu';
 import { useUser } from '../contexts/UserContext';
 import { ToastContainer } from 'react-toastify';
+import Menu from '../Menu';
 const { Header, Footer, Sider, Content } = Layout;
 const Wrapper = ({ children }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -17,7 +18,7 @@ const Wrapper = ({ children }) => {
         <Layout>
             <Sider className={cn(styles.sideBar, isMenuOpen ? styles.sideBarIsOpened : styles.sideBarIsClosed)}>
                 <Hamburger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
-                {user ? <UserMenu /> : <LoginMenu />}
+                {user ? <Menu /> : <LoginMenu />}
             </Sider>
             <Layout>
                 <Header className={styles.header}>Pixel Race 🏇</Header>

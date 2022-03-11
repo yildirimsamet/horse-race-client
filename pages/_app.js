@@ -1,6 +1,7 @@
 import UserProviderWrapper from '../components/providers/UserProviderWrapper';
 import WrapperLayout from '../components/Layout'
 import 'react-toastify/dist/ReactToastify.css';
+import "antd/dist/antd.css";
 import '../styles/globals.scss'
 
 function MyApp({ Component, pageProps }) {
