@@ -3,5 +3,9 @@
         "login": "/user/login",
         "register": "/user/register",
         "get_horses": "user/get-horses"
+    },
+    "horse": {
+        "get_horse_chests": "/horse/get-horse-chests",
+        "buy_horse_chest": "/horse/buy-horse-chest"
     }
 }

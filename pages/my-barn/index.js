@@ -4,13 +4,16 @@ import getConfigForServer from "../../utils/getConfigForServer";
 import styles from "./styles.module.scss";
 import { useState } from "react";
 import HorseCard from "../../components/HorseCard";
+import HeaderTitle from "../../components/HeaderTitle";
 
 const MyBarnPage = ({ sHorses }) => {
   const [cHorses ] = useState(sHorses);
   
   return (
     <div className={styles.barn}>
-      <h1 className={styles.barnTitle}>My Barn 🏚️</h1>
+      <HeaderTitle>
+      My Barn 🏚️
+      </HeaderTitle>
       <div className={styles.barnHorseCards}>
        {cHorses.map((horse)=>{
          console.log("horse",horse)

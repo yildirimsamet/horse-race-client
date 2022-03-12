@@ -2,12 +2,11 @@
 .navigations {
     display: flex;
     flex-direction: column;
-    // background-color: $yellow;
     padding: 5px 10px 25px;
     margin: auto 15px auto;
     border-radius: 10px;
     width: 95%;
-    a {
+    &Link {
         color: $beige;
         text-transform: uppercase;
         opacity: .7;
@@ -17,6 +16,9 @@
             transition: .2s ease all;
             opacity: 1;
             color: $white;
+        }
+        &Active {
+            opacity: 1;
         }
     }
 }

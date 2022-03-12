@@ -26,6 +26,7 @@
     &Img {
         font: 100px Muybridge;
         animation: 2.5s linear infinite Gallop;
+        filter: drop-shadow(2px 3px 4px $black)
     }
     &Name {
         font-weight: bold;
