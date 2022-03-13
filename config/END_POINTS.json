@@ -10,6 +10,7 @@
         "buy_horse_chest": "/horse/buy-horse-chest"
     },
     "pixel_shop": {
-        "get_items": "/pixel-shop/get-items"
+        "get_items": "/pixel-shop/get-items",
+        "buy_item": "/pixel-shop/buy-item"
     }
 }

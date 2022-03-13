@@ -8,13 +8,15 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { Modal } from "antd";
 import getConfigForClient from "../../utils/getConfigForClient";
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
-import HorseCard from '../../components/HorseCard'
-const MySwal = withReactContent(Swal)
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import HorseCard from "../../components/HorseCard";
+import getConfigForServer from "../../utils/getConfigForServer";
+
+const MySwal = withReactContent(Swal);
 
 const GetHorsePage = ({ horseChests }) => {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const [buyedHorse, setBuyedHorse] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -28,28 +30,30 @@ const GetHorsePage = ({ horseChests }) => {
   };
 
   const handleOk = async () => {
-    
-   try {
-    const { data } = await axios.post(
-      END_POINTS.horse.buy_horse_chest,
-      { chestLevel: selectedChest.level },
-      getConfigForClient()
-    );
-      console.log('data',data)
-    if (data.success) {
-      MySwal.fire({
-        icon: 'success',
-        title: 'Congrats! You unlocked a new horse!',
-        html: <HorseCard horse={data.horse}/>,
-      })
-    } else {
-      toast.error(data.message || "Something went wrong");
+    try {
+      setIsLoading(true);
+      const { data } = await axios.post(
+        END_POINTS.horse.buy_horse_chest,
+        { chestLevel: selectedChest.level },
+        getConfigForClient()
+      );
+      if (data.success) {
+        setUser({ ...user, coins: user.coins - selectedChest.price });
+        MySwal.fire({
+          icon: "success",
+          title: "Congrats! You unlocked a new horse!",
+          html: <HorseCard horse={data.horse} />,
+        });
+      } else {
+        toast.error(data.message || "Something went wrong");
+      }
+      setIsModalVisible(false);
+      setIsLoading(false);
+    } catch (error) {
+      toast.error("Something went wrong");
+      setIsModalVisible(false);
+      setIsLoading(false);
     }
-    setIsModalVisible(false);
-   } catch (error) {
-     toast.error('Something went wrong');
-     setIsModalVisible(false);
-   }
   };
 
   const handleCancel = () => {
@@ -97,13 +101,27 @@ const GetHorsePage = ({ horseChests }) => {
     </div>
   );
 };
-export const getServerSideProps = async () => {
-  const { data } = await axios.get(END_POINTS.horse.get_horse_chests);
-  const horseChests = data.success ? data.horseChests : null;
-  return {
-    props: {
-      horseChests,
-    },
-  };
+export const getServerSideProps = async ({ req, res }) => {
+  try {
+    const config = await getConfigForServer(req, res);
+    if (!config.headers.Authorization) {
+      throw new Error("No authorization header");
+    }
+    const { data } = await axios.get(END_POINTS.horse.get_horse_chests);
+    const horseChests = data.success ? data.horseChests : null;
+    return {
+      props: {
+        horseChests,
+      },
+    };
+  } catch (error) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/",
+      },
+      props: {},
+    };
+  }
 };
 export default GetHorsePage;

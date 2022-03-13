@@ -14,7 +14,6 @@ const MyBarnPage = ({ sHorses }) => {
       <HeaderTitle>My Barn 🏚️</HeaderTitle>
       <div className={styles.barnHorseCards}>
         {cHorses.map((horse) => {
-          console.log("horse", horse);
           return <HorseCard key={horse.id} horse={horse} />;
         })}
       </div>
@@ -24,6 +23,9 @@ const MyBarnPage = ({ sHorses }) => {
 export const getServerSideProps = async ({ req, res }) => {
   try {
     const config = await getConfigForServer(req, res);
+    if (!config.headers.Authorization) {
+      throw new Error("No authorization header");
+    }
     const { data } = await axios.get(END_POINTS.user.get_horses, config);
 
     return {

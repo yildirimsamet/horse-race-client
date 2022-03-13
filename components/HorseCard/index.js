@@ -2,7 +2,6 @@ import styles from "./styles.module.scss";
 import { Progress } from "antd";
 
 const HorseCard = ({ horse }) => {
-  console.log("horse", horse);
   const calculatePercentage = (current, max) => {
     return (current / max) * 100;
   };
@@ -44,7 +43,10 @@ const HorseCard = ({ horse }) => {
   };
   return (
     <div className={styles.horse}>
-      <h4 className={styles.horseTitle} style={{ color: handleHorseTitle(horse.level).color }}>
+      <h4
+        className={styles.horseTitle}
+        style={{ color: handleHorseTitle(horse.level).color }}
+      >
         {handleHorseTitle(horse.level).title}
       </h4>
       <div
@@ -123,14 +125,6 @@ const HorseCard = ({ horse }) => {
           </div>
         </div>
       </div>
-      {/* <div className={styles.horseProgress}>
-        <Progress
-          strokeColor={"#004643"}
-          percent={calculatePercentage(horse.experience, 1000)}
-          showInfo={false}
-          size="small"
-        />
-      </div> */}
     </div>
   );
 };

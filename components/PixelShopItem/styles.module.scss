@@ -1,16 +1,17 @@
 @import '../../styles/colors';
 .pixelItem {
     cursor: pointer;
-    border: 2px solid $yellow;
+    border: 2px solid $green;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 8px;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.1);
     transition: .2s ease all;
     box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.25);
+    padding-bottom: 15px;
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.05);
     }
     &Img {
         margin-bottom: 10px;
@@ -20,5 +21,15 @@
     &Property {
         color: $green;
         font-weight: 500;
+    }
+    &Buy {
+        button {
+            background-color: $green;
+            color: $beige;
+            &:hover {
+                border-color: $green;
+                color: $green;
+            }
+        }
     }
 }

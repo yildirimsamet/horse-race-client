@@ -29,7 +29,6 @@ const Register = () => {
         try {
             setLoading(true)
             const { data } = await axios.post(END_POINTS.user.register, userInfo);
-            console.log('data', data)
             if (data.success) {
                 clearInputs();
                 setUserStorageAndCookie({ user: data.user, token: data.token });

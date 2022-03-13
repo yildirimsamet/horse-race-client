@@ -1,4 +1,4 @@
-@import '../../styles/colors';
+@import "../../styles/colors";
 .userMenu {
     background-color: $beige;
     padding: 15px 10px 15px;
@@ -15,6 +15,9 @@
         strong {
             margin-right: 5px;
             font-size: 16px;
+        }
+        & img {
+            height: 20px;
         }
         display: flex;
         align-items: center;
