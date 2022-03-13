@@ -14,9 +14,9 @@ const Navigations = () => {
 
   return (
     <div className={styles.navigations}>
-      {routes.map((route) => {
+      {routes.map((route, index) => {
         return (
-          <Link href={route.route}>
+          <Link key={index} href={route.route}>
             <a
               className={cn(
                 styles.navigationsLink,

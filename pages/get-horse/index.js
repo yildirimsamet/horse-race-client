@@ -6,22 +6,50 @@ import END_POINTS from "../../config/END_POINTS.json";
 import { useUser } from "../../components/contexts/UserContext";
 import { toast } from "react-toastify";
 import { useState } from "react";
-import { Modal } from 'antd';
+import { Modal } from "antd";
+import getConfigForClient from "../../utils/getConfigForClient";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import HorseCard from '../../components/HorseCard'
+const MySwal = withReactContent(Swal)
+
 const GetHorsePage = ({ horseChests }) => {
   const { user } = useUser();
+  const [buyedHorse, setBuyedHorse] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedChest, setSelectedChest] = useState({
-    level: '',
-    price: '',
+    level: "",
+    price: "",
   });
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
+  const handleOk = async () => {
+    
+   try {
+    const { data } = await axios.post(
+      END_POINTS.horse.buy_horse_chest,
+      { chestLevel: selectedChest.level },
+      getConfigForClient()
+    );
+      console.log('data',data)
+    if (data.success) {
+      MySwal.fire({
+        icon: 'success',
+        title: 'Congrats! You unlocked a new horse!',
+        html: <HorseCard horse={data.horse}/>,
+      })
+    } else {
+      toast.error(data.message || "Something went wrong");
+    }
     setIsModalVisible(false);
+   } catch (error) {
+     toast.error('Something went wrong');
+     setIsModalVisible(false);
+   }
   };
 
   const handleCancel = () => {
@@ -62,7 +90,8 @@ const GetHorsePage = ({ horseChests }) => {
         confirmLoading={isLoading}
       >
         <p>
-          You are about to but  <strong>Level {selectedChest.level} </strong> chest for <strong>{selectedChest.price} coins</strong>!
+          You are about to but <strong>Level {selectedChest.level} </strong>{" "}
+          chest for <strong>{selectedChest.price} coins</strong>!
         </p>
       </Modal>
     </div>

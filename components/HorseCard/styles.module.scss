@@ -1,4 +1,4 @@
-@import '../../styles/colors';
+@import "../../styles/colors";
 @font-face {
     font-family: Muybridge;
     src: url(https://www.lorp.org/fonts/MuybridgeGX.woff2);
@@ -18,28 +18,37 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 300px;
-    box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.46);
-    padding: 25px;
+    height: 400px;
+    box-shadow: 4px 4px 15px -5px rgba(0, 0, 0, 0.26);
+    padding: 15px 25px;
     border-radius: 5px;
     background: rgba(0, 0, 0, 0.05);
+    &Title {
+        background: rgba(0, 0, 0, 0.25);
+        padding: 5px;
+        border-radius: 4px;
+    }
     &Img {
         font: 100px Muybridge;
         animation: 2.5s linear infinite Gallop;
-        filter: drop-shadow(2px 3px 4px $black)
     }
     &Name {
         font-weight: bold;
-        font-size: 26px;
+        font-size: 20px;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
     &Properties {
-        margin-top: 10px;
+        margin-top: 15px;
         width: 100%;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 15px 15px;
-        justify-items: center;
+        gap: 20px 20px;
+        text-align: left;
         &Item {
+            margin-bottom: 5px;
             & span:first-child {
                 margin-right: 5px;
                 font-weight: bold;

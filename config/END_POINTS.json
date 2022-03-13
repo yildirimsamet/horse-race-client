@@ -2,10 +2,14 @@
     "user": {
         "login": "/user/login",
         "register": "/user/register",
-        "get_horses": "user/get-horses"
+        "get_horses": "user/get-horses",
+        "get_user_info": "user/get-user-info"
     },
     "horse": {
         "get_horse_chests": "/horse/get-horse-chests",
         "buy_horse_chest": "/horse/buy-horse-chest"
+    },
+    "pixel_shop": {
+        "get_items": "/pixel-shop/get-items"
     }
 }
