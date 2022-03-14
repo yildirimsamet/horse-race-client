@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import Menu from '../Menu';
 const { Header, Footer, Sider, Content } = Layout;
 const Wrapper = ({ children }) => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(true);
     const { user } = useUser();
 
 

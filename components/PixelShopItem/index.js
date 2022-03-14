@@ -37,13 +37,24 @@ const PixelShopItem = ({ item }) => {
         getConfigForClient()
       );
       if (data.success) {
-        const itemName = item.name === "Straw" ? "strawCount" : "carrotCount";
         const userData = { ...user };
         const purchasePrice = item.price * quantity;
 
         userData.coins -= purchasePrice;
-        userData[itemName] += quantity;
 
+        const isUserHaveItem = userData.items.some((userItem) => {
+          return userItem.id === item.id;
+        });
+
+        if (!isUserHaveItem) {
+          userData.items.push({...item,quantity});
+        } else {
+          userData.items.find((userItem) => {
+            if (userItem.id === item.id) {
+              userItem.quantity += quantity;
+            }
+          });
+        }
         setUser(userData);
 
         MySwal.fire({

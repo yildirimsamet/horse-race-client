@@ -32,11 +32,13 @@ const UserMenu = () => {
       </h3>
       <h3 className={styles.userMenuInfo}>
         <strong>Straw: </strong>
-        <img src="/assets/straw.png" alt="" /> {user.strawCount}
+        <img src="/assets/straw.png" alt="" />
+        {user.items.find((i) => i.name === "Straw")?.quantity || 0}
       </h3>
       <h3 className={styles.userMenuInfo}>
         <strong>Carrot: </strong>
-        <img src="/assets/carrot.png" alt="" /> {user.carrotCount}
+        <img src="/assets/carrot.png" alt="" />
+        {user.items.find((i) => i.name === "Carrot")?.quantity || 0}
       </h3>
       <div className={styles.userMenuLogout}>
         <Button onClick={handleLogout} type="primary">
