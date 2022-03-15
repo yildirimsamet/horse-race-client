@@ -1,0 +1,29 @@
+@import '../../../styles/colors';
+.horse {
+    &Footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 5px;
+        width: 100%;
+        & button {
+            width: 30%;
+            background: $green;
+            color: $beige;
+            opacity: 0.80;
+            transition: .2s ease all;
+            &:hover {
+                background: $green;
+                opacity: 1;
+                border: $green;
+                color: $white;
+            }
+            &:focus {
+                background: $green;
+                opacity: 1;
+                border: $green;
+                color: $white;
+            }
+        }
+    }
+}

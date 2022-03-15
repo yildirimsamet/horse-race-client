@@ -1,4 +1,4 @@
-@import './colors';
+@import "./colors";
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
     color: $green !important;
 }
@@ -9,4 +9,21 @@
 
 .ant-tabs-ink-bar {
     background: $green !important;
+}
+
+.ant-btn,
+.ant-btn-primary {
+    background: $green;
+    color: $beige;
+    border-color: $green;
+    &:hover {
+        border-color: $green;
+        color: $green;
+        background: $white;
+    }
+    &:focus {
+        border-color: $green;
+        color: $green;
+        background: $white;
+    }
 }
