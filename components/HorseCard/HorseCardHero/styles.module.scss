@@ -1,0 +1,32 @@
+@import "../../../styles/colors";
+@font-face {
+    font-family: Muybridge;
+    src: url(https://www.lorp.org/fonts/MuybridgeGX.woff2);
+}
+
+@keyframes Gallop {
+    from {
+        font-variation-settings: "TIME" 0;
+    }
+    to {
+        font-variation-settings: "TIME" 15;
+    }
+}
+
+.horse {
+    &Img {
+        font: 100px Muybridge;
+        animation: 2.5s linear infinite Gallop;
+        &Shadow {
+            &1 {
+                filter: drop-shadow(2px 3px 4px $level1);
+            }
+            &2 {
+                filter: drop-shadow(2px 3px 4px $level2);
+            }
+            &3 {
+                filter: drop-shadow(2px 3px 4px $level3);
+            }
+        }
+    }
+}

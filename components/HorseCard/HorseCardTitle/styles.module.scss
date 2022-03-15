@@ -1,0 +1,17 @@
+@import "../../../styles/colors";
+.horse {
+    &Title {
+        background: rgba(0, 0, 0, 0.25);
+        padding: 5px;
+        border-radius: 4px;
+        &1 {
+            color: $level1;
+        }
+        &2 {
+            color: $level2;
+        }
+        &3 {
+            color: $level3;
+        }
+    }
+}

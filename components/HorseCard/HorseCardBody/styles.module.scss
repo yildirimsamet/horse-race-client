@@ -1,0 +1,28 @@
+@import '../../../styles/colors';
+.horse {
+    &Properties {
+        margin-top: 15px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 20px;
+        text-align: left;
+        &Item {
+            margin-bottom: 5px;
+            & span:first-child {
+                margin-right: 5px;
+                font-weight: bold;
+                font-size: 16px;
+            }
+            & span:last-child {
+                font-weight: 600;
+            }
+        }
+    }
+    &Progress {
+        width: 85%;
+        & .ant-progress-bg {
+            background-color: $green !important;
+        }
+    }
+}
