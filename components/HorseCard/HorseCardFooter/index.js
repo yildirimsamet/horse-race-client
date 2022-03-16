@@ -1,16 +1,17 @@
 import { Button, Modal } from "antd";
 import { useState } from "react";
 import styles from "./styles.module.scss";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+import axios from "../../../utils/axios";
+import END_POINTS from "../../../config/END_POINTS.json";
 import { useUser } from "../../contexts/UserContext";
 import { Select, InputNumber } from "antd";
+import {toast} from 'react-toastify';
+import getConfigForClient from '../../../utils/getConfigForClient';
 
 const { Option } = Select;
 
 const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
   const { user, setUser } = useUser();
-  console.log(user);
   const [isLoading, setIsLoading] = useState(false);
   const [modalInfo, setModalInfo] = useState({ title: "" });
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -26,38 +27,53 @@ const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
   };
 
   const handleOk = async () => {
-    if (
-      selectedFoodInput > 0 ||
-      selectedFoodInput <=
-        (user?.items?.find((item) => item.id == selectedFood.id)).quantity
-    ) {
-      // Some code..
-      // Assume for now request is okey.
-
-      setUser({
-        ...user,
-        items: user.items.map((item) => {
-          if (item.id == selectedFood.id) {
-            item.quantity -= selectedFoodInput;
-          }
-          return item;
-        }),
-      });
-
-      setCHorses(
-        cHorses.map((cHorse) => {
-          if (cHorse.id === horse.id) {
-            return {
-              ...cHorse,
-              satiety:
-                cHorse.satiety + selectedFoodInput * selectedFood.energy > 100
-                  ? 100
-                  : cHorse.satiety + selectedFoodInput * selectedFood.energy,
-            };
-          }
-          return cHorse;
-        })
-      );
+    setIsLoading(true);
+    try {
+      if (
+        selectedFoodInput > 0 ||
+        selectedFoodInput <=
+          (user?.items?.find((item) => item.id == selectedFood.id)).quantity
+      ) {
+        const { data } = await axios.post(END_POINTS.horse.feed_horse, {
+          horseId: horse.id,
+          foodId: selectedFood.id,
+          foodQuantity: selectedFoodInput,
+        },getConfigForClient());
+        if (data?.success) {
+          setUser({
+            ...user,
+            items: user.items.map((item) => {
+              if (item.id == selectedFood.id) {
+                item.quantity -= selectedFoodInput;
+              }
+              return item;
+            }),
+          });
+  
+          setCHorses(
+            cHorses.map((cHorse) => {
+              if (cHorse.id === horse.id) {
+                return {
+                  ...cHorse,
+                  satiety:
+                    cHorse.satiety + selectedFoodInput * selectedFood.energy > 100
+                      ? 100
+                      : cHorse.satiety + selectedFoodInput * selectedFood.energy,
+                };
+              }
+              return cHorse;
+            })
+          );
+          toast.success("Horse satiety increased!");
+          setIsModalVisible(false)
+        } else {
+          toast.error(data?.message || "Something went wrong!");
+        }
+        setIsLoading(false);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      toast.error(error?.message || "Something went wrong!");
     }
   };
 
@@ -94,7 +110,9 @@ const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
         okText="Ok"
         confirmLoading={isLoading}
         width={250}
-        okButtonProps={{ disabled: selectedFood?.quantity <= 0  || !selectedFood}}
+        okButtonProps={{
+          disabled: selectedFood?.quantity <= 0 || !selectedFood,
+        }}
       >
         <div>
           <Select

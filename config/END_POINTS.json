@@ -7,7 +7,8 @@
     },
     "horse": {
         "get_horse_chests": "/horse/get-horse-chests",
-        "buy_horse_chest": "/horse/buy-horse-chest"
+        "buy_horse_chest": "/horse/buy-horse-chest",
+        "feed_horse": "/horse/feed-horse"
     },
     "pixel_shop": {
         "get_items": "/pixel-shop/get-items",
