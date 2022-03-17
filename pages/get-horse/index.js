@@ -17,7 +17,6 @@ const MySwal = withReactContent(Swal);
 
 const GetHorsePage = ({ horseChests }) => {
   const { user, setUser } = useUser();
-  const [buyedHorse, setBuyedHorse] = useState(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedChest, setSelectedChest] = useState({
@@ -42,7 +41,7 @@ const GetHorsePage = ({ horseChests }) => {
         MySwal.fire({
           icon: "success",
           title: "Congrats! You unlocked a new horse!",
-          html: <HorseCard horse={data.horse} />,
+          html: <HorseCard isPreview horse={data.horse} />,
         });
       } else {
         toast.error(data.message || "Something went wrong");

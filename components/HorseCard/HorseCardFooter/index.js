@@ -42,7 +42,7 @@ const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
         if (data?.success) {
           setUser({
             ...user,
-            items: user.items.map((item) => {
+            items: user?.items.map((item) => {
               if (item.id == selectedFood.id) {
                 item.quantity -= selectedFoodInput;
               }
@@ -59,6 +59,7 @@ const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
                     cHorse.satiety + selectedFoodInput * selectedFood.energy > 100
                       ? 100
                       : cHorse.satiety + selectedFoodInput * selectedFood.energy,
+                  weight: cHorse.weight + selectedFoodInput * selectedFood.energy > 1000 ? 1000 : cHorse.weight + selectedFoodInput * selectedFood.energy,
                 };
               }
               return cHorse;
