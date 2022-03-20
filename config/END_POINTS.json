@@ -8,10 +8,16 @@
     "horse": {
         "get_horse_chests": "/horse/get-horse-chests",
         "buy_horse_chest": "/horse/buy-horse-chest",
-        "feed_horse": "/horse/feed-horse"
+        "feed_horse": "/horse/feed-horse",
+        "sell_horse": "/horse/sell-horse"
     },
     "pixel_shop": {
         "get_items": "/pixel-shop/get-items",
         "buy_item": "/pixel-shop/buy-item"
+    },
+    "horse_market": {
+        "get_horses": "/horse-market/get-horses",
+        "cancel_sell": "/horse-market/cancel-sell",
+        "buy_horse": "/horse-market/buy-horse"
     }
 }

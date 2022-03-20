@@ -1,5 +1,47 @@
 @import "../../styles/colors";
 .horse {
+    position: relative;
+    &OnSell {
+        &:hover {
+            cursor: pointer;
+            &::after {
+                transition: .3s ease all;
+                transform: translate(-50%, -50%) rotate(-45deg) scale(1.2);
+            }
+        }
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-origin: center;
+            top: 0;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(1.9px);
+            -webkit-backdrop-filter: blur(1.9px);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+        }
+        &::after {
+            content: "On Sale";
+            position: absolute;
+            font-size: 28px;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: $red;
+            background: rgba(0, 0, 0, 0.08);
+            padding: 15px 25px;
+            white-space: nowrap;
+            border-radius: 25px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            z-index: 2;
+            transition: .3s ease all;
+        }
+    }
     border: 2px solid $yellow;
     display: flex;
     flex-direction: column;

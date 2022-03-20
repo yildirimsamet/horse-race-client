@@ -11,7 +11,7 @@ const MyBarnPage = ({ sHorses }) => {
 
   return (
     <div className={styles.barn}>
-      <HeaderTitle>My Barn 🏚️</HeaderTitle>
+      <HeaderTitle>🏚️ My Barn 🏚️</HeaderTitle>
       <div className={styles.barnHorseCards}>
         {cHorses.map((horse) => {
           return <HorseCard isPreview={false} cHorses={cHorses} setCHorses={setCHorses} key={horse.id} horse={horse} />;

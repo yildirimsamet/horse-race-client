@@ -7,7 +7,7 @@ import getConfigForServer from "../../utils/getConfigForServer";
 const PixelShopPage = ({ items }) => {
   return (
     <div>
-      <HeaderTitle>Pixel Shop</HeaderTitle>
+      <HeaderTitle>🥕 Pixel Shop 🥕</HeaderTitle>
       <div className={styles.pixelShop}>
         {items.map((item) => {
           return <PixelShopItem item={item} key={item.id} />;

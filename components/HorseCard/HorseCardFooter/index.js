@@ -1,23 +1,27 @@
 import { Button, Modal } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import axios from "../../../utils/axios";
 import END_POINTS from "../../../config/END_POINTS.json";
 import { useUser } from "../../contexts/UserContext";
 import { Select, InputNumber } from "antd";
-import {toast} from 'react-toastify';
-import getConfigForClient from '../../../utils/getConfigForClient';
+import { toast } from "react-toastify";
+import getConfigForClient from "../../../utils/getConfigForClient";
+import SwalReact from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
+const Swal = withReactContent(SwalReact);
 const { Option } = Select;
 
 const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
   const { user, setUser } = useUser();
+  const [sellPrice, setSellPrice] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [modalInfo, setModalInfo] = useState({ title: "" });
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [selectedFood, setSelectedFood] = useState(null);
   const [selectedFoodInput, setSelectedFoodInput] = useState(1);
-
+ 
   const handleFoodChange = (id) => {
     setSelectedFoodInput(1);
     setSelectedFood(user?.items?.find((item) => item.id === id));
@@ -34,11 +38,15 @@ const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
         selectedFoodInput <=
           (user?.items?.find((item) => item.id == selectedFood.id)).quantity
       ) {
-        const { data } = await axios.post(END_POINTS.horse.feed_horse, {
-          horseId: horse.id,
-          foodId: selectedFood.id,
-          foodQuantity: selectedFoodInput,
-        },getConfigForClient());
+        const { data } = await axios.post(
+          END_POINTS.horse.feed_horse,
+          {
+            horseId: horse.id,
+            foodId: selectedFood.id,
+            foodQuantity: selectedFoodInput,
+          },
+          getConfigForClient()
+        );
         if (data?.success) {
           setUser({
             ...user,
@@ -49,24 +57,30 @@ const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
               return item;
             }),
           });
-  
+
           setCHorses(
             cHorses.map((cHorse) => {
               if (cHorse.id === horse.id) {
                 return {
                   ...cHorse,
                   satiety:
-                    cHorse.satiety + selectedFoodInput * selectedFood.energy > 100
+                    cHorse.satiety + selectedFoodInput * selectedFood.energy >
+                    100
                       ? 100
-                      : cHorse.satiety + selectedFoodInput * selectedFood.energy,
-                  weight: cHorse.weight + selectedFoodInput * selectedFood.energy > 1000 ? 1000 : cHorse.weight + selectedFoodInput * selectedFood.energy,
+                      : cHorse.satiety +
+                        selectedFoodInput * selectedFood.energy,
+                  weight:
+                    cHorse.weight + selectedFoodInput * selectedFood.energy >
+                    1000
+                      ? 1000
+                      : cHorse.weight + selectedFoodInput * selectedFood.energy,
                 };
               }
               return cHorse;
             })
           );
           toast.success("Horse satiety increased!");
-          setIsModalVisible(false)
+          setIsModalVisible(false);
         } else {
           toast.error(data?.message || "Something went wrong!");
         }
@@ -88,11 +102,59 @@ const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
   const handleQuantity = (value) => {
     setSelectedFoodInput(value);
   };
+  const handleSell = () => {
+    Swal.fire({
+      title: "You are about to sell your horse",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      input: "number",
+      inputValue: 1,
+      inputAttributes: {
+        min: 1,
+      },
+    }).then((result) => {
+      if (result.value <= 0) {
+        return toast.error("Price must be greater than 0!");
+      }
+      try {
+        if (result.isConfirmed) {
+          axios
+            .post(
+              END_POINTS.horse.sell_horse,
+              { horseId: horse.id, price: +result.value },
+              getConfigForClient()
+            )
+            .then((res) => {
+              if (res.data.success) {
+                toast.success("Horse on market now!");
+                setCHorses(
+                  cHorses.map((cHorse) => {
+                    if (cHorse.id === horse.id) {
+                      return { ...cHorse, isOnMarket: true, };
+                    }
+                    return cHorse;
+                  })
+                );
+              } else {
+                toast.error(res.data.message || "Something went wrong!");
+              }
+            })
+            .catch((err) => {
+              toast.error(err.message || "Something went wrong!");
+            });
+        }
+        setSellPrice(1);
+      } catch (error) {
+        toast.error(error?.message || "Something went wrong!");
+      }
+    });
+  };
   return (
     <>
       <div className={styles.horseFooter}>
         <Button>Race</Button>
-        <Button>Sell</Button>
+        <Button onClick={handleSell}>Sell</Button>
         <Button
           onClick={() => {
             setModalInfo({ title: "Feed Horse" });

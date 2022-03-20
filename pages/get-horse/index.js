@@ -66,7 +66,7 @@ const GetHorsePage = ({ horseChests }) => {
   };
   return (
     <div className={styles.getHorse}>
-      <HeaderTitle>Get a Horse!</HeaderTitle>
+      <HeaderTitle>🎠 Get a Horse! 🎠</HeaderTitle>
       <div className={styles.getHorseBoxes}>
         {horseChests &&
           horseChests.map((chestData) => {
