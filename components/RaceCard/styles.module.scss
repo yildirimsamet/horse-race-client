@@ -1,0 +1,8 @@
+@import '../../styles/colors';
+.race {
+    padding: 15px;
+    color: $beige;
+    border: 1px solid rgba($color: $black, $alpha: .25);
+    border-radius: 4px;
+    background: rgba($color: $green, $alpha: .9);
+}

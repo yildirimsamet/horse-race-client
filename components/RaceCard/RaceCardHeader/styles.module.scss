@@ -1,0 +1,32 @@
+@import '../../../styles/colors';
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed rgba(0, 0, 0, 0.3);
+    padding-bottom: 15px;
+    &Id {
+        font-weight: 600;
+    }
+    &Countdown {
+        &>div>span {
+            font-size: 18px;
+            color: $beige;
+        }
+    }
+    &Count {
+        &>span:first-child {
+            font-size: 16px;
+            font-weight: 600;
+        }
+    }
+    &Price {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &>span {
+            margin-right: 15px;
+        }
+    }
+}
