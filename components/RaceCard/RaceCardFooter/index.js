@@ -14,7 +14,6 @@ const { Option } = Select;
 const RaceCardFooter = ({ race }) => {
   const router = useRouter();
   const { cRaces, setCRaces } = useRaces();
-  console.log("craces", cRaces);
   const isDone = race.statu === 1;
   const { currentCount, maxCount, price, statu } = race;
   const isFull = currentCount / maxCount == 1;
@@ -33,7 +32,6 @@ const RaceCardFooter = ({ race }) => {
       { raceId: race.id, horseId: selectedHorseId },
       getConfigForClient()
     );
-    console.log("data", data);
     if (!data.success)
       return toast.error(data.message || "Something went wrong!");
     setUser({ ...user, coins: user.coins - race.price });
@@ -68,7 +66,6 @@ const RaceCardFooter = ({ race }) => {
       END_POINTS.user.get_horses_for_race,
       getConfigForClient()
     );
-    console.log(data);
     if (data.success) {
       showModal();
       setUserAvailableHorses(data.horses);
@@ -78,7 +75,7 @@ const RaceCardFooter = ({ race }) => {
     setSelectedHorseId(value);
   }
   const handleWatch = () => {
-    router.push("races/" + race.id);
+    router.push("/races/" + race.id);
   };
   return (
     <div className={styles.raceCardFooter}>

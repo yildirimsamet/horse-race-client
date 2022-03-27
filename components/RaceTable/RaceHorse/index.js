@@ -38,13 +38,12 @@ const RaceHorse = ({ isRaceOn, cRaceResult, laneWidth }) => {
       ref={horseRef}
       style={{
         color: raceHorse?.color || "black",
-        background: "rgba(0,0,0,0.2)",
-        borderRadius: "5px",
       }}
       className={cn(
         styles.raceHorse,
         isUserHorse && styles.raceHorseIsUserHorse,
-        isRaceOn && !isHorseFinished && styles.raceHorseRunning
+        isRaceOn && !isHorseFinished && styles.raceHorseRunning,
+        styles[`raceHorseDropShadow${raceHorse.level}`]
       )}
     >
       {!isUserHorse && (

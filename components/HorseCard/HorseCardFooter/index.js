@@ -1,5 +1,5 @@
 import { Button, Modal } from "antd";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./styles.module.scss";
 import axios from "../../../utils/axios";
 import END_POINTS from "../../../config/END_POINTS.json";
@@ -9,11 +9,12 @@ import { toast } from "react-toastify";
 import getConfigForClient from "../../../utils/getConfigForClient";
 import SwalReact from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-
+import { useRouter } from "next/router";
 const Swal = withReactContent(SwalReact);
 const { Option } = Select;
 
 const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
+  const router = useRouter();
   const { user, setUser } = useUser();
   const [sellPrice, setSellPrice] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -153,7 +154,11 @@ const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
   return (
     <>
       <div className={styles.horseFooter}>
-        <Button>Race</Button>
+        <Button
+        onClick={()=>{
+          router.push("/races")
+        }}
+        >Race</Button>
         <Button onClick={handleSell}>Sell</Button>
         <Button
           onClick={() => {

@@ -19,7 +19,6 @@ const RaceCardHeader = ({
   const [cStatu, setCStatu] = useState(statu);
   const { setCRaces } = useRaces();
   const onFinish = () => {
-    console.log("finished!");
     setCStatu(1);
     setTimeout(async()=>{
       const { data } = await axios.get(END_POINTS.races.get_races, getConfigForClient());
@@ -42,7 +41,9 @@ const RaceCardHeader = ({
               onFinish={onFinish}
             />
           ) : (
-            "Race is Done"
+            <span style={{fontSize: 18}}>
+              Race is Done
+            </span>
           )}
         </div>
         <div className={styles.headerCount}>

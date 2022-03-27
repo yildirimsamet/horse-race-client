@@ -3,7 +3,6 @@ import {useEffect, useState} from 'react';
 import HeaderTitle from '../../HeaderTitle';
 import RaceTable from '../../RaceTable';
 const WatchRaceBody = ({sRaceResults}) => {
-    console.log("sRaceRes",sRaceResults);
     const [cRaceResults, setCRaceResults] = useState(sRaceResults);
     const [isRaceOn ,setIsRaceOn] = useState(false);
     const [timer,setTimer]=useState(3);
@@ -25,8 +24,14 @@ const WatchRaceBody = ({sRaceResults}) => {
            <HeaderTitle>
                🎉 Race 🎉
            </HeaderTitle>
-           {timer}
-           {`${isRaceOn}`}
+           <div style={{
+               textAlign:"center",
+               fontSize: 18,
+               marginBottom:5,
+               fontWeight:"bold"
+           }}>
+               {isRaceOn ? "Start" : timer}
+           </div>
            <RaceTable isRaceOn={isRaceOn} cRaceResults={cRaceResults} />
         </div>
     );

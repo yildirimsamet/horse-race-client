@@ -51,7 +51,7 @@
         }
     }
     &Running {
-        animation: .6s linear infinite Gallop;
+        animation: .5s linear infinite Gallop;
     }
     &Title {
         font-size: 12px;
@@ -65,5 +65,19 @@
         // text-overflow: ellipsis;
         top: 0;
         text-align: center;
+    }
+    &DropShadow {
+        &1 {
+            filter: drop-shadow(1px 2px 3px $level1);
+        }
+        &2 {
+            filter: drop-shadow(1px 2px 3px $level2);
+        }
+        &3 {
+            filter: drop-shadow(1px 2px 3px $level3);
+        }
+        &4 {
+            filter: drop-shadow(1px 2px 3px $level4);
+        }
     }
 }

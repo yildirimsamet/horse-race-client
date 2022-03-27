@@ -1,10 +1,10 @@
 import styles from "./styles.module.scss";
 
-const HorseChest = ({ level, onClick }) => {
+const HorseChest = ({ level, onClick, price }) => {
   const chestColors = {
     1: "#999393",
     2: "#367be3",
-    3: "#FFD700",
+    3: "#e359e1",
     default: "#999393",
   };
   return (
@@ -29,7 +29,7 @@ const HorseChest = ({ level, onClick }) => {
           <div className={styles.chest_keyhole}></div>
         </div>
       </div>
-      <h5 className={styles.level}>Level: {level}</h5>
+      <h5 className={styles.level}>Level: {level} {`( ${price} )`}</h5>
     </div>
   );
 };

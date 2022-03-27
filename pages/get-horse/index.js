@@ -72,6 +72,7 @@ const GetHorsePage = ({ horseChests }) => {
           horseChests.map((chestData) => {
             return (
               <HorseChest
+                price={chestData.price}
                 key={chestData.id}
                 level={chestData.level}
                 onClick={() => {
@@ -93,7 +94,7 @@ const GetHorsePage = ({ horseChests }) => {
         confirmLoading={isLoading}
       >
         <p>
-          You are about to but <strong>Level {selectedChest.level} </strong>{" "}
+          You are about to buy <strong>Level {selectedChest.level} </strong>{" "}
           chest for <strong>{selectedChest.price} coins</strong>!
         </p>
       </Modal>
