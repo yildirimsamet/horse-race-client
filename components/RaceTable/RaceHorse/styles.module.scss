@@ -1,0 +1,69 @@
+@import "../../../styles/colors";
+@font-face {
+    font-family: Muybridge;
+    src: url(https://www.lorp.org/fonts/MuybridgeGX.woff2);
+}
+
+@keyframes Gallop {
+    from {
+        font-variation-settings: "TIME" 0;
+    }
+    to {
+        font-variation-settings: "TIME" 15;
+    }
+}
+
+@keyframes arrowUpDown {
+    0% {
+        transform: translateY(5px);
+    }
+    50% {
+        transform: translateY(0px);
+    }
+    100% {
+        transform: translateY(5px);
+    }
+}
+
+.raceHorse {
+    font-family: Muybridge;
+    font-size: 65px;
+    z-index: 123;
+    width: 65px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    &IsUserHorse {
+        &::before {
+            content: "";
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 5px;
+            border-color: $red transparent transparent transparent;
+            position: absolute;
+            top: 0;
+            right: 30%;
+            transform: translateX(-50%);
+            animation: arrowUpDown 2s infinite;
+        }
+    }
+    &Running {
+        animation: .6s linear infinite Gallop;
+    }
+    &Title {
+        font-size: 12px;
+        font-weight: bold;
+        position: absolute;
+        color: $beige;
+        width: 62px;
+        height: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        // text-overflow: ellipsis;
+        top: 0;
+        text-align: center;
+    }
+}

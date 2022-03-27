@@ -2,8 +2,9 @@
     "user": {
         "login": "/user/login",
         "register": "/user/register",
-        "get_horses": "user/get-horses",
-        "get_user_info": "user/get-user-info"
+        "get_horses": "/user/get-horses",
+        "get_user_info": "/user/get-user-info",
+        "get_horses_for_race": "/user/get-horses-for-race"
     },
     "horse": {
         "get_horse_chests": "/horse/get-horse-chests",
@@ -19,5 +20,11 @@
         "get_horses": "/horse-market/get-horses",
         "cancel_sell": "/horse-market/cancel-sell",
         "buy_horse": "/horse-market/buy-horse"
+    },
+    "races": {
+        "get_races": "/races/get-races",
+        "join_race": "/races/join-race",
+        "leave_race": "/races/leave-race",
+        "get_results": "/races/get-results"
     }
 }

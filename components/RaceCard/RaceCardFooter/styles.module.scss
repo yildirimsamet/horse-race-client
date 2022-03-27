@@ -1,0 +1,26 @@
+@import '../../../styles/colors';
+.raceCardFooter {
+    margin-top: 15px;
+    text-align: center;
+    & button {
+        width: 85px;
+        background: rgba($color: $yellow, $alpha: .95);
+        border: 1px solid $yellow;
+        color: $green;
+        font-weight: 600;
+        &:hover {
+            background: rgba($color: $yellow, $alpha: .85);
+        }
+        &:focus {
+            outline: none;
+            background: rgba($color: $yellow, $alpha: .85);
+        }
+    }
+    &Select {
+        &Option {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+}

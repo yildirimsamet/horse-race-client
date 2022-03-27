@@ -1,0 +1,29 @@
+@import '../../styles/colors';
+.raceTable {
+    padding: 15px 0;
+    width: 100%;
+    position: relative;
+    background: $raceTable;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 65px;
+        height: 100%;
+        background: $raceTable;
+        border-right: 2px dashed $black;
+        z-index: 1;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0%;
+        width: 65px;
+        height: 100%;
+        background: $raceTable;
+        border-left: 2px dashed $black;
+        z-index: 1;
+    }
+}

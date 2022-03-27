@@ -4,11 +4,11 @@ import styles from "./styles.module.scss";
 import cn from "classnames";
 const Navigations = () => {
   const routes = [
-    { route: "my-barn", name: "My Barn" },
-    { route: "races", name: "Races" },
-    { route: "horse-shop", name: "Horse Shop" },
-    { route: "get-horse", name: "Get Horse" },
-    { route: "pixel-shop", name: "Pixel Shop" },
+    { route: "/my-barn", name: "My Barn" },
+    { route: "/races", name: "Races" },
+    { route: "/horse-shop", name: "Horse Shop" },
+    { route: "/get-horse", name: "Get Horse" },
+    { route: "/pixel-shop", name: "Pixel Shop" },
   ];
   const router = useRouter();
 
