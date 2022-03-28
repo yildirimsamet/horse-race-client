@@ -68,16 +68,16 @@
     }
     &DropShadow {
         &1 {
-            filter: drop-shadow(1px 2px 3px $level1);
+            filter: drop-shadow(0px 1px 1px $level1);
         }
         &2 {
-            filter: drop-shadow(1px 2px 3px $level2);
+            filter: drop-shadow(0px 2px 1px $level2);
         }
         &3 {
-            filter: drop-shadow(1px 2px 3px $level3);
+            filter: drop-shadow(0px 2px 1px $level3);
         }
         &4 {
-            filter: drop-shadow(1px 2px 3px $level4);
+            filter: drop-shadow(0px 2px 1px $level4);
         }
     }
 }

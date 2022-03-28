@@ -35,23 +35,26 @@ const RaceHorse = ({ isRaceOn, cRaceResult, laneWidth }) => {
   }, [horseRef, isRaceOn]);
   return (
     <div
-      ref={horseRef}
-      style={{
-        color: raceHorse?.color || "black",
-      }}
       className={cn(
         styles.raceHorse,
         isUserHorse && styles.raceHorseIsUserHorse,
-        isRaceOn && !isHorseFinished && styles.raceHorseRunning,
-        styles[`raceHorseDropShadow${raceHorse.level}`]
+        isRaceOn && !isHorseFinished && styles.raceHorseRunning
       )}
+      ref={horseRef}
     >
+      <div
+        className={styles[`raceHorseDropShadow${raceHorse.level}`]}
+        style={{
+          color: raceHorse?.color || "black",
+        }}
+      >
+        🐎
+      </div>
       {!isUserHorse && (
         <span title={raceHorse.name} className={styles.raceHorseTitle}>
           {raceHorse.name}
         </span>
       )}
-      🐎
     </div>
   );
 };
