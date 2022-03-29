@@ -4,8 +4,9 @@ import { GiTwoCoins } from "react-icons/gi";
 import { useState } from "react";
 import { useRaces } from "../../contexts/RacesContext";
 import axios from "../../../utils/axios";
-import END_POINTS from '../../../config/END_POINTS.json';
+import END_POINTS from "../../../config/END_POINTS.json";
 import getConfigForClient from "../../../utils/getConfigForClient";
+import { convertUTCDateToLocalDate } from "../../../utils/convertUTCDateToLocalDate";
 const { Countdown } = Statistic;
 
 const RaceCardHeader = ({
@@ -20,14 +21,17 @@ const RaceCardHeader = ({
   const { setCRaces } = useRaces();
   const onFinish = () => {
     setCStatu(1);
-    setTimeout(async()=>{
-      const { data } = await axios.get(END_POINTS.races.get_races, getConfigForClient());
-    if(data.success) {
-      setCRaces(data.races)
-    }
-    },2000)
+    setTimeout(async () => {
+      const { data } = await axios.get(
+        END_POINTS.races.get_races,
+        getConfigForClient()
+      );
+      if (data.success) {
+        setCRaces(data.races);
+      }
+    }, 2000);
   };
-
+  const localDate = convertUTCDateToLocalDate(new Date(startTime));
   return (
     <>
       <div className={styles.header}>
@@ -37,13 +41,11 @@ const RaceCardHeader = ({
             <Countdown
               style={{ fontSize: 10 }}
               className={styles.headerCountdown}
-              value={startTime}
+              value={localDate}
               onFinish={onFinish}
             />
           ) : (
-            <span style={{fontSize: 18}}>
-              Race is Done
-            </span>
+            <span style={{ fontSize: 18 }}>Race is Done</span>
           )}
         </div>
         <div className={styles.headerCount}>
