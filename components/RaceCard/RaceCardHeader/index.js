@@ -6,7 +6,6 @@ import { useRaces } from "../../contexts/RacesContext";
 import axios from "../../../utils/axios";
 import END_POINTS from "../../../config/END_POINTS.json";
 import getConfigForClient from "../../../utils/getConfigForClient";
-import { convertUTCDateToLocalDate } from "../../../utils/convertUTCDateToLocalDate";
 const { Countdown } = Statistic;
 
 const RaceCardHeader = ({
@@ -31,7 +30,7 @@ const RaceCardHeader = ({
       }
     }, 2000);
   };
-  const localDate = convertUTCDateToLocalDate(new Date(startTime));
+
   return (
     <>
       <div className={styles.header}>

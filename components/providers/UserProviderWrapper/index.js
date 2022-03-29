@@ -11,16 +11,23 @@ const UserProviderWrapper = ({ children }) => {
   const [firstTimeSession, setFirstTimeSession] = useState(true);
 
   const getUserInfo = async () => {
-   try {
-    const { data } = await axios.get(END_POINTS.user.get_user_info, {
+    try {
+      const { data } = await axios.get(END_POINTS.user.get_user_info, {
         headers: {
           Authorization: Cookies.get("token"),
         },
       });
-      setUser(data.user);
-   } catch (error) {
-       console.log("error",error)
-   }
+
+      if (data.success) {
+        setUser(data.user);
+      } else {
+        removeUserStorageAndCookie();
+        setUser(null);
+      }
+    } catch (error) {
+      removeUserStorageAndCookie();
+      setUser(null);
+    }
   };
   useEffect(() => {
     setFirstTimeSession(false);
