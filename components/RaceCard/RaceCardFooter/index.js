@@ -21,19 +21,23 @@ const RaceCardFooter = ({ race }) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [userAvailableHorses, setUserAvailableHorses] = useState(null);
   const [selectedHorseId, setSelectedHorseId] = useState(null);
+  const [isLoading,setIsLoading] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
   };
 
   const handleOk = async () => {
+    setIsLoading(true);
     const { data } = await axios.post(
       END_POINTS.races.join_race,
       { raceId: race.id, horseId: selectedHorseId },
       getConfigForClient()
     );
-    if (!data.success)
+    if (!data.success) {
+      setIsLoading(false);
       return toast.error(data.message || "Something went wrong!");
+    }
     setUser({ ...user, coins: user.coins - race.price });
 
     const manipulatedUser = { ...user };
@@ -54,6 +58,7 @@ const RaceCardFooter = ({ race }) => {
     );
     toast.success("You joined race successfully!");
     setIsModalVisible(false);
+    setIsLoading(false);
   };
 
   const handleCancel = () => {
@@ -84,7 +89,7 @@ const RaceCardFooter = ({ race }) => {
           Watch
         </Button>
       ) : (
-        <Button onClick={handleRaceJoin} disabled={isFull || isDone}>
+        <Button loading={isLoading} onClick={handleRaceJoin} disabled={isFull || isDone}>
           {isFull ? "Full!" : "Join"}
         </Button>
       )}
@@ -97,6 +102,7 @@ const RaceCardFooter = ({ race }) => {
         onOk={handleOk}
         onCancel={handleCancel}
         width={400}
+        confirmLoading={isLoading}
       >
         {userAvailableHorses ? (
           <div>

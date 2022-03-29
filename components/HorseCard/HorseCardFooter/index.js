@@ -106,6 +106,7 @@ const HorseCardFooter = ({ horse, cHorses, setCHorses }) => {
   const handleSell = () => {
     Swal.fire({
       title: "You are about to sell your horse",
+      showLoaderOnConfirm: true,
       showCancelButton: true,
       confirmButtonText: "Yes",
       cancelButtonText: "No",

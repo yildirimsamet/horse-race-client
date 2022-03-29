@@ -19,8 +19,7 @@ const RaceListItem = ({ user: raceUser, race }) => {
       text: "You are about to leave race",
       icon: "warning",
       showCancelButton: true,
-      // confirmButtonColor: '#3085d6',
-      // cancelButtonColor: '#d33',
+      showLoaderOnConfirm: true,
       confirmButtonText: "Yes, leave!",
     }).then(async (result) => {
       if (result.isConfirmed) {

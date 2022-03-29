@@ -40,7 +40,7 @@ const RaceCardHeader = ({
             <Countdown
               style={{ fontSize: 10 }}
               className={styles.headerCountdown}
-              value={localDate}
+              value={startTime}
               onFinish={onFinish}
             />
           ) : (

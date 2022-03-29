@@ -102,6 +102,7 @@ const HorseShopPage = ({ sHorses }) => {
                     showCancelButton: true,
                     confirmButtonText: "Yes",
                     cancelButtonText: "No",
+                    showLoaderOnConfirm: true,
                   }).then((result) => {
                     if (result.isConfirmed) {
                       axios
@@ -146,6 +147,7 @@ const HorseShopPage = ({ sHorses }) => {
                     showCancelButton: true,
                     confirmButtonText: "Yes",
                     cancelButtonText: "No",
+                    showLoaderOnConfirm: true,
                   }).then((result) => {
                     if (user.coins < marketItem.price) {
                       return toast.error("You don't have enough coins");
@@ -199,7 +201,6 @@ const HorseShopPage = ({ sHorses }) => {
   return (
     <div>
       <HeaderTitle>🏪 Horse Market 🏪</HeaderTitle>
-
       <Table columns={columns} dataSource={tableData} />
     </div>
   );
