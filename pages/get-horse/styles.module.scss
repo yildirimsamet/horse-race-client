@@ -1,3 +1,4 @@
+@import '../../styles/breakpoints';
 .getHorse {
     &Title {
         text-align: center;
@@ -10,5 +11,10 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: 15px 15px;
         justify-items: center;
+    }
+    @include sm {
+        &Boxes {
+            grid-template-columns: 1fr;
+        }
     }
 }

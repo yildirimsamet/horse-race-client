@@ -1,8 +1,16 @@
-@import '../../../styles/colors';
+@import '../../../styles/breakpoints';
 .races {
     &Grid {
         display: grid;
         gap: 25px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@include xl {
+    .races {
+        &Grid {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
     }
 }

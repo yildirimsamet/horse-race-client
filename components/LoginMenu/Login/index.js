@@ -24,7 +24,7 @@ const Login = () => {
                 setUserStorageAndCookie({ user: data.user, token: data.token });
                 toast.success('Login successful!');
             } else {
-                toast.error('Check your credentials!');
+                toast.error(data.message || 'Check your credentials!');
             }
         } catch (error) {
             console.log(error)
@@ -40,8 +40,8 @@ const Login = () => {
     return (
         <div>
             <form className={styles.loginForm} onSubmit={handleLogin}>
-                <Input name='email' value={userInfo.email} onChange={handleInputs} className={styles.loginInput} placeholder='Email' />
-                <Input name='password' value={userInfo.password} onChange={handleInputs} className={styles.loginInput} placeholder='Password' type='password' />
+                <Input type="email" name='email' value={userInfo.email} onChange={handleInputs} className={styles.loginInput} placeholder='Email' />
+                <Input minLength={6} name='password' value={userInfo.password} onChange={handleInputs} className={styles.loginInput} placeholder='Password' type='password' />
                 <Button htmlType='submit' loading={loading} className={styles.loginButton} type='primary'>Login</Button>
             </form>
         </div>
