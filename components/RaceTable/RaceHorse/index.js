@@ -5,10 +5,12 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { CustomEase } from "gsap/dist/CustomEase";
 import { getEase } from "../../../utils/getEase";
+import useWindowType from "../../../hooks/useWindowType";
 
 gsap.registerPlugin(CustomEase);
 
 const RaceHorse = ({ isRaceOn, cRaceResult, laneWidth }) => {
+  const windowType = useWindowType();
   const { user } = useUser();
   const horseRef = useRef();
   const [isHorseFinished, setIsHorseFinished] = useState(false);
@@ -26,7 +28,12 @@ const RaceHorse = ({ isRaceOn, cRaceResult, laneWidth }) => {
       gsap.to(horseRef.current, {
         duration: raceHorse.speed / 1000,
         ease: CustomEase.create("custom", getEase(raceHorse.speedType)),
-        x: laneWidth - 65, // 65 is the width of the horse css
+        x:
+          laneWidth - (windowType === "desktop"
+            ? 65
+            : windowType === "tablet"
+            ? 45
+            : 35), //horse widths
       });
     }
     return () => {

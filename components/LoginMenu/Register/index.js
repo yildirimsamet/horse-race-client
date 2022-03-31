@@ -40,7 +40,8 @@ const Register = () => {
         setLoading(false);
         setUser(data.user);
       } else {
-        toast.error("Check your credentials!");
+        toast.error(error.message || "Check your credentials!");
+        setLoading(false);
       }
     } catch (error) {
       toast.error("An error occured!");

@@ -7,24 +7,11 @@ const WatchRaceBody = ({ sRaceResults }) => {
   const [cRaceResults, setCRaceResults] = useState(sRaceResults);
   const [isRaceOn, setIsRaceOn] = useState(false);
   const [timer, setTimer] = useState(true);
-  const raceStartTimerDeadline = Date.now() + 4000;
+  const raceStartTimerDeadline = Date.now() + 2000;
   const handleCountDownFinish = () => {
     setTimer(false);
     setIsRaceOn(true);
   };
-  // useEffect(()=>{
-  //     const timerInterval = setInterval(()=>{
-  //         if(timer > 1) {
-  //             setTimer(timer=>timer-1);
-  //         } else {
-  //             setIsRaceOn(true);
-  //             clearInterval(timerInterval);
-  //         }
-  //     },1000)
-  //     return ()=>{
-  //         clearInterval(timerInterval);
-  //     }
-  // },[timer])
   return (
     <div className={styles.watchRace}>
       <HeaderTitle>🎉 Race 🎉</HeaderTitle>

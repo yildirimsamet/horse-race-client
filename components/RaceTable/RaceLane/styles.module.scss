@@ -1,4 +1,5 @@
 @import "../../../styles/colors";
+@import '../../../styles/breakpoints';
 .raceLane {
     width: 100%;
     height: 55px;
@@ -10,4 +11,16 @@
     justify-content: flex-start;
     align-items: center;
     position: relative;
+}
+
+@include md {
+    .raceLane {
+        height: 40px;
+    }
+}
+
+@include sm {
+    .raceLane {
+        height: 30px;
+    }
 }
