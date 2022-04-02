@@ -1,4 +1,5 @@
 @import "../../../styles/colors";
+@import "../../../styles/breakpoints";
 .horse {
     &Title {
         background: rgba(0, 0, 0, 0.25);
@@ -15,6 +16,15 @@
         }
         &4 {
             color: $level4;
+        }
+    }
+}
+
+@include sm {
+    .horse {
+        &Title {
+            font-size: 12px;
+            margin-bottom: 0;
         }
     }
 }

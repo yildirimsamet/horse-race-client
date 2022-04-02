@@ -14,6 +14,7 @@
     }
     @include sm {
         &Boxes {
+            margin-top: 50px;
             grid-template-columns: 1fr;
         }
     }

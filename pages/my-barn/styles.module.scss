@@ -1,3 +1,4 @@
+@import '../../styles/breakpoints';
 .barn {
     &Title {
         margin-bottom: 35px;
@@ -23,5 +24,14 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         gap: 15px 15px;
+    }
+}
+
+@include sm {
+    .barn {
+        &HorseCards {
+            margin-top: 50px;
+            grid-template-columns: 1fr;
+        }
     }
 }

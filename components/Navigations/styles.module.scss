@@ -1,4 +1,5 @@
 @import '../../styles/colors';
+@import '../../styles/breakpoints';
 .navigations {
     display: flex;
     flex-direction: column;
@@ -19,6 +20,15 @@
         }
         &Active {
             opacity: 1;
+        }
+    }
+}
+
+@include sm {
+    .navigations {
+        width: 85%;
+        &Link {
+            font-size: 20px;
         }
     }
 }

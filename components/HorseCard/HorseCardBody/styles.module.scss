@@ -1,4 +1,5 @@
 @import '../../../styles/colors';
+@import '../../../styles/breakpoints';
 .horse {
     &Properties {
         margin-top: 15px;
@@ -23,6 +24,22 @@
         width: 85%;
         & .ant-progress-bg {
             background-color: $green !important;
+        }
+    }
+}
+
+@include sm {
+    .horse {
+        &Properties {
+            gap: 10px 10px;
+            &Item {
+                & span:first-child {
+                    font-size: 12px;
+                }
+                & span:last-child {
+                    font-size: 12px;
+                }
+            }
         }
     }
 }

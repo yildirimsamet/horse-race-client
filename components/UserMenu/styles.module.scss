@@ -1,4 +1,5 @@
 @import "../../styles/colors";
+@import '../../styles/breakpoints';
 .userMenu {
     background-color: $beige;
     padding: 15px 10px 15px;
@@ -31,6 +32,39 @@
             &:hover {
                 background-color: $red;
                 border-color: $red;
+            }
+        }
+    }
+}
+
+@include sm {
+    .userMenu {
+        width: 85%;
+        &Avatar {
+            &>span {
+                width: 35px !important;
+                height: 35px !important;
+                & svg {
+                    width: 15px !important;
+                    height: 15px !important;
+                    margin-bottom: 24px;
+                }
+            }
+        }
+        &Info {
+            font-size: 12px;
+            strong {
+                margin-right: 5px;
+                font-size: 14px;
+            }
+            & img {
+                height: 15px;
+            }
+        }
+        &Logout {
+            button {
+                font-size: 12px;
+                padding: 5px 10px;
             }
         }
     }

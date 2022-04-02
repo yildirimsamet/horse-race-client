@@ -1,4 +1,5 @@
 @import "../../../styles/colors";
+@import "../../../styles/breakpoints";
 @font-face {
     font-family: Muybridge;
     src: url(https://www.lorp.org/fonts/MuybridgeGX.woff2);
@@ -30,6 +31,15 @@
             &4 {
                 filter: drop-shadow(2px 3px 4px $level4);
             }
+        }
+    }
+}
+
+@include sm {
+    .horse {
+        &Img {
+            font-size: 75px;
+            height: 75px;
         }
     }
 }

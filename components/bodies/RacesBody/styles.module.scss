@@ -14,3 +14,12 @@
         }
     }
 }
+
+@include sm {
+    .races {
+        &Grid {
+            margin-top: 50px;
+            grid-template-columns: 1fr;
+        }
+    }
+}

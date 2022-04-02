@@ -1,11 +1,12 @@
 @import "../../styles/colors";
+@import "../../styles/breakpoints";
 .horse {
     position: relative;
     &OnSell {
         &:hover {
             cursor: pointer;
             &::after {
-                transition: .3s ease all;
+                transition: 0.3s ease all;
                 transform: translate(-50%, -50%) rotate(-45deg) scale(1.2);
             }
         }
@@ -39,14 +40,14 @@
             left: 50%;
             transform: translate(-50%, -50%) rotate(-45deg);
             z-index: 2;
-            transition: .3s ease all;
+            transition: 0.3s ease all;
         }
     }
     &OnRace {
         &:hover {
             cursor: pointer;
             &::after {
-                transition: .3s ease all;
+                transition: 0.3s ease all;
                 transform: translate(-50%, -50%) rotate(-45deg) scale(1.2);
             }
         }
@@ -80,7 +81,7 @@
             left: 50%;
             transform: translate(-50%, -50%) rotate(-45deg);
             z-index: 2;
-            transition: .3s ease all;
+            transition: 0.3s ease all;
         }
     }
     border: 2px solid $yellow;
@@ -99,5 +100,17 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+}
+
+@include sm {
+    .horse {
+        height: 380px;
+        width: 85%;
+        margin: 0 auto;
+        &Name {
+            margin-top: 15px;
+            font-size: 16px;
+        }
     }
 }

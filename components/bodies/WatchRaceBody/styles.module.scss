@@ -1,0 +1,17 @@
+@import "../../../styles/breakpoints";
+.watchRace {
+    &Header {
+        text-align: center;
+        font-size: 18;
+        margin-bottom: 5;
+        font-weight: bold;
+    }
+}
+
+@include sm {
+    .watchRace {
+        &Header {
+            margin-top: 55px;
+        }
+    }
+}

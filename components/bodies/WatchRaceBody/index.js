@@ -1,8 +1,9 @@
 import styles from "./styles.module.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import HeaderTitle from "../../HeaderTitle";
 import RaceTable from "../../RaceTable";
 import Countdown from "antd/lib/statistic/Countdown";
+
 const WatchRaceBody = ({ sRaceResults }) => {
   const [cRaceResults, setCRaceResults] = useState(sRaceResults);
   const [isRaceOn, setIsRaceOn] = useState(false);
@@ -15,28 +16,23 @@ const WatchRaceBody = ({ sRaceResults }) => {
   return (
     <div className={styles.watchRace}>
       <HeaderTitle>🎉 Race 🎉</HeaderTitle>
-      <div
-        style={{
-          textAlign: "center",
-          fontSize: 18,
-          marginBottom: 5,
-          fontWeight: "bold",
-        }}
-      >
-        <div style={{
+      <div className={styles.watchRaceHeader} style={{}}>
+        <div
+          style={{
             maxHeight: 28,
             marginBottom: 15,
             fontSize: 18,
-        }}>
-        {timer ? (
-          <Countdown
-            onFinish={handleCountDownFinish}
-            value={raceStartTimerDeadline}
-            format="s"
-          />
-        ) : (
-          "Start"
-        )}
+          }}
+        >
+          {timer ? (
+            <Countdown
+              onFinish={handleCountDownFinish}
+              value={raceStartTimerDeadline}
+              format="s"
+            />
+          ) : (
+            "Start"
+          )}
         </div>
       </div>
       <RaceTable isRaceOn={isRaceOn} cRaceResults={cRaceResults} />

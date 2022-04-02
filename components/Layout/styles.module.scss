@@ -3,6 +3,7 @@
 .sideBar {
     background: $black !important;
     transition: 1s !important;
+    z-index: 99;
     &IsOpened {
         width: 275px !important;
         max-width: 275px !important;
@@ -16,6 +17,10 @@
         max-width: 275px !important;
         position: absolute !important;
         right: 100% !important;
+    }
+    &Mobile {
+        position: absolute !important;
+        height: 100%;
     }
 }
 
