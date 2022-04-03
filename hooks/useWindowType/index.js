@@ -9,9 +9,9 @@ const useWindowType = () => {
   const [windowType, setWindowType] = useState(windowTypes.desktop);
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 414) {
+      if (window.innerWidth <= 450) {
         setWindowType(windowTypes.mobile);
-      } else if (window.innerWidth > 414 && window.innerWidth <= 767) {
+      } else if (window.innerWidth > 450 && window.innerWidth <= 800) {
         setWindowType(windowTypes.tablet);
       } else {
         setWindowType(windowTypes.desktop);
