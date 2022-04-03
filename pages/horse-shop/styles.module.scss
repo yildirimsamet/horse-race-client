@@ -1,0 +1,16 @@
+@import '../../styles/globals.scss';
+.horseShop {
+    scrollbar-width: auto;
+    &::-webkit-scrollbar {
+        height: 12px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $green;
+        border-radius: 10px;
+        border: 2px solid $beige;
+    }
+    overflow-x: scroll !important;
+    &Table {
+        min-width: 1080px !important;
+    }
+}

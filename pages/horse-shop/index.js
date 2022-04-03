@@ -11,6 +11,7 @@ import SwalReact from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { toast } from "react-toastify";
 import HeaderTitle from "../../components/HeaderTitle";
+import styles from "./styles.module.scss";
 
 const Swal = withReactContent(SwalReact);
 const HorseShopPage = ({ sHorses }) => {
@@ -199,9 +200,9 @@ const HorseShopPage = ({ sHorses }) => {
     },
   ];
   return (
-    <div>
+    <div className={styles.horseShop}>
       <HeaderTitle>🏪 Horse Market 🏪</HeaderTitle>
-      <Table columns={columns} dataSource={tableData} />
+      <Table className={styles.horseShopTable} columns={columns} dataSource={tableData} />
     </div>
   );
 };
