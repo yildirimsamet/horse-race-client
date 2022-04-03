@@ -8,12 +8,16 @@ import { useUser } from "../contexts/UserContext";
 import { ToastContainer } from "react-toastify";
 import useWindowType from "../../hooks/useWindowType";
 import Menu from "../Menu";
+import { BsGithub } from "react-icons/bs";
+import Link from 'next/link';
 
 const { Header, Footer, Sider, Content } = Layout;
 
 const Wrapper = ({ children }) => {
   const windowType = useWindowType();
-  const [isMenuOpen, setIsMenuOpen] = useState(windowType !== "desktop" ? false : true);
+  const [isMenuOpen, setIsMenuOpen] = useState(
+    windowType !== "desktop" ? false : true
+  );
   const { user } = useUser();
   const [currentWindowType, setCurrentWindowType] = useState(windowType);
 
@@ -38,10 +42,14 @@ const Wrapper = ({ children }) => {
       </Sider>
       <Layout>
         <Header className={styles.header}>Pixel Race 🏇</Header>
-        <Content style={{ minHeight: "100vh" }} className={styles.content}>
-          {children}
-        </Content>
-        <Footer>Footer</Footer>
+        <Content className={styles.content}>{children}</Content>
+        <Footer className={styles.footer}>
+          <Link href="https://github.com/yildirimsamet">
+            <a>
+              <BsGithub fontSize={24} />
+            </a>
+          </Link>
+        </Footer>
       </Layout>
       <ToastContainer />
     </Layout>

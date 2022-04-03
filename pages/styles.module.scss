@@ -1,0 +1,95 @@
+@import "../styles/breakpoints";
+@import "../styles/colors";
+.home {
+    max-width: 850px;
+    margin: 0 auto;
+    img {
+        width: 200px;
+    }
+    &Header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+    &Body {
+        &Item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            color: $green;
+            margin-bottom: 30px;
+            position: relative;
+            &Badge {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                display: block;
+                background-color: $green;
+                color: $beige;
+                border-radius: 50%;
+                text-align: center;
+                line-height: 50px;
+                &Left {
+                    left: 0;
+                }
+                &Right {
+                    right: 0;
+                }
+            }
+            & div {
+                margin: 0 50px;
+            }
+        }
+    }
+}
+
+@include md {
+    .home {
+        img {
+            width: 150px;
+        }
+        &Header {
+            margin-bottom: 15px;
+            & img {
+                width: 170px !important;
+            }
+        }
+        &Body {
+            &Item {
+                flex-direction: column;
+                font-size: 22px;
+                margin-bottom: 25px;
+                &Badge {
+                    width: 35px;
+                    height: 35px;
+                    line-height: 35px;
+                    &Left {
+                        left: 15px;
+                    }
+                    &Right {
+                        right: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include sm {
+    .home {
+        img {
+            width: 100px;
+        }
+        &Header {
+            margin-bottom: 15px;
+        }
+        &Body {
+            &Item {
+                font-size: 18px;
+                margin-bottom: 15;
+            }
+        }
+    }
+}

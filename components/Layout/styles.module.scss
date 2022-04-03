@@ -36,4 +36,15 @@
 
 .content {
     padding: 25px 15px;
+    min-height: calc(100vh - 142px);
+}
+
+.footer {
+    text-align: right;
+    a {
+        color: $black;
+        &:hover {
+            color: rgba($color: $black, $alpha: 0.8);
+        }
+    }
 }
