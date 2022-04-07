@@ -5,18 +5,37 @@ import styles from "./styles.module.scss";
 import { useState } from "react";
 import HorseCard from "../../components/HorseCard";
 import HeaderTitle from "../../components/HeaderTitle";
+import Link from "next/link";
 
 const MyBarnPage = ({ sHorses }) => {
   const [cHorses, setCHorses] = useState(sHorses);
-
+  const isUserHaveHorse = cHorses.length > 0;
   return (
     <div className={styles.barn}>
       <HeaderTitle>🏚️ My Barn 🏚️</HeaderTitle>
-      <div className={styles.barnHorseCards}>
-        {cHorses.map((horse) => {
-          return <HorseCard isPreview={false} cHorses={cHorses} setCHorses={setCHorses} key={horse.id} horse={horse} />;
-        })}
-      </div>
+      {isUserHaveHorse ? (
+        <div className={styles.barnHorseCards}>
+          {cHorses.map((horse) => {
+            return (
+              <HorseCard
+                isPreview={false}
+                cHorses={cHorses}
+                setCHorses={setCHorses}
+                key={horse.id}
+                horse={horse}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <div className={styles.barnEmpty}>
+          You don't have any horse yet. Try to open a
+          <Link href={"/get-horse"}>
+            <a> horse box </a>
+          </Link>
+          !
+        </div>
+      )}
     </div>
   );
 };

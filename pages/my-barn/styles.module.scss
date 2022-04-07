@@ -25,6 +25,12 @@
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         gap: 15px 15px;
     }
+    &Empty {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 24px;
+        color: #828282;
+    }
 }
 
 @include sm {

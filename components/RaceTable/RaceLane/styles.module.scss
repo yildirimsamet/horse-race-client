@@ -11,16 +11,30 @@
     justify-content: flex-start;
     align-items: center;
     position: relative;
+    &Placement {
+        z-index: 9;
+        font-size: 20px;
+        color: $beige;
+        position: absolute;
+        right: 70px;
+    }
 }
 
 @include md {
     .raceLane {
         height: 40px;
+        &Placement {
+            right: 50px;
+        }
     }
 }
 
 @include sm {
     .raceLane {
         height: 30px;
+        &Placement {
+            font-size: 14px;
+            right: 40px;
+        }
     }
 }

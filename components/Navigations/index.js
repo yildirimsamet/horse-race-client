@@ -7,9 +7,9 @@ import useWindowType from "../../hooks/useWindowType";
 const Navigations = ({ setIsMenuOpen }) => {
   const routes = [
     { route: "/my-barn", name: "My Barn" },
+    { route: "/get-horse", name: "Get Horse" },
     { route: "/races", name: "Races" },
     { route: "/horse-shop", name: "Horse Shop" },
-    { route: "/get-horse", name: "Get Horse" },
     { route: "/pixel-shop", name: "Pixel Shop" },
   ];
   const router = useRouter();

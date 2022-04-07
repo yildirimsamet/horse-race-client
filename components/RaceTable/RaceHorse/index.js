@@ -9,7 +9,7 @@ import useWindowType from "../../../hooks/useWindowType";
 
 gsap.registerPlugin(CustomEase);
 
-const RaceHorse = ({ isRaceOn, cRaceResult, laneWidth }) => {
+const RaceHorse = ({ isRaceOn, cRaceResult, laneWidth, setShowPlacement }) => {
   const windowType = useWindowType();
   const { user } = useUser();
   const horseRef = useRef();
@@ -22,8 +22,10 @@ const RaceHorse = ({ isRaceOn, cRaceResult, laneWidth }) => {
     if (isRaceOn) {
       horseFinishRaceTO = setTimeout(() => {
         setIsHorseFinished(true);
+        setShowPlacement(true);
       }, raceHorse.speed);
     }
+
     if (horseRef.current && isRaceOn) {
       gsap.to(horseRef.current, {
         duration: raceHorse.speed / 1000,
