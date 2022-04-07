@@ -29,7 +29,7 @@ const MyBarnPage = ({ sHorses }) => {
         </div>
       ) : (
         <div className={styles.barnEmpty}>
-          You don't have any horse yet. Try to open a
+          You dont have any horse yet. Try to open a
           <Link href={"/get-horse"}>
             <a> horse box </a>
           </Link>
